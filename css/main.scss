@@ -27,7 +27,15 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
-
+.button {
+  border: 0;
+  background: #3D9CDD;
+  box-shadow: 0px 1px 2px 0px rgba(34,40,52,0.70), inset 0px 1px 0px 0px rgba(255,255,255,0.15);
+  border-radius: 4px;
+  font-size: 15px;
+  color: #FFFFFF;
+  line-height: 19px;
+}
 
 // Using media queries with like this:
 // @include media-query($on-palm) {
