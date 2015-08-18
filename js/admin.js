@@ -15,6 +15,7 @@ window.addEventListener('message', function (event) {
     console.log(access_token);
 		$.getJSON('https://api.github.com/user?access_token=' + access_token, function (user) {
 			userName = user.login;
+      console.log(user);
       console.log(user.login);
 		});
 	});
