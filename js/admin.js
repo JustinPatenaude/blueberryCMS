@@ -9,6 +9,7 @@ $('.github_login').click(function(){
 
 window.addEventListener('message', function (event) {
 	var code = event.data;
+  console.log(event.data);
 	$.getJSON('http://blueberry.justinpatenaude.com/token.php?code=' + code, function (access_token) {
     oauthToken = access_token;
     console.log(access_token);
