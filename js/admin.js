@@ -4,15 +4,17 @@ var userName = "";
 var oauthToken = "";
 
 $('.github_login').click(function(){
-  window.open('https://github.com/login/oauth/authorize?client_id=e4a530296caca9a0979d&state=fhf74hfgdje8hfgfjhdg4627');
+  window.open('https://github.com/login/oauth/authorize?client_id=e4a530296caca9a0979d');
 });
 
 window.addEventListener('message', function (event) {
 	var code = event.data;
 	$.get('http://blueberry.justinpatenaude.com/token.php?code=' + code, function (access_token) {
     oauthToken = access_token;
+    console.log(access_token);
 		$.getJSON('https://api.github.com/user?access_token=' + access_token, function (user) {
 			userName = user.login;
+      console.log(user.login);
 		});
 	});
 });
@@ -22,7 +24,7 @@ var github = new Github({
   auth: "oauth"
 });
 
-var user = github.getUser();
+var user = userName;
 
 user.repos(function(err, repos) {
   repos.append('.admin');
