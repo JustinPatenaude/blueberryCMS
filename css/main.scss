@@ -35,6 +35,13 @@ $on-laptop:        800px;
   font-size: 15px;
   color: #FFFFFF;
   line-height: 19px;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.button {
+  background: #3785BB;
 }
 
 // Using media queries with like this:
