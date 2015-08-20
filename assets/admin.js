@@ -1,12 +1,25 @@
 $(function() {
 
-var userName = Cookies.get('username');
-var accessToken = Cookies.get('access_token');
+var userName = 'JustinPatenaude'; //Cookies.get('username');
+var accessToken = 'e4a41102c6b5270ae96bdf35c992980f0f3eec56'; //Cookies.get('access_token');
 var repositoryName = Cookies.get('repository_name');
+var github = new Github({
+      token: accessToken,
+      auth: "oauth"
+    });
+var repo = github.getRepo(userName, repositoryName);
+var frontMatter = require('gray-matter');
 
 /* onLoad
 =================================*/
-findRepositories(accessToken);
+
+if (window.location.href.indexOf("hello") > -1) {
+  findRepositories(accessToken);
+}
+
+if (window.location.href.indexOf("/edit_pages/") > -1) {
+  findFiles();
+}
 
 /* Events
 =================================*/
@@ -50,7 +63,7 @@ function findRepositories(){
   if(accessToken != undefined){
     $('.github_login').hide();
     $('.github_logout').css('display', 'inline-block');
-    var github = new Github({
+    github = new Github({
       token: accessToken,
       auth: "oauth"
     });
@@ -79,10 +92,24 @@ function saveRepository(repository){
   repository.addClass('selected');
   repositoryName = repository.attr('data-name');
   Cookies.set('repository_name', repositoryName);
+  repo = github.getRepo(userName, repositoryName);
 }
 
 function checkRepository(){
     console.log(repositoryName);
+}
+
+function findFiles(){
+  repo.getTree('master', function(err, tree) {
+    $.each(tree, function(key, value){
+      if(value['path'].indexOf('.md') > -1){
+        repo.read('master', value['path'], function(err, data) {
+          frontMatter(data);
+          console.log(data);
+        });
+      }
+    });
+  });
 }
 
 

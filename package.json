@@ -1,0 +1,25 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "Applicationm",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustinPatenaude/blueberryCMS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustinPatenaude/blueberryCMS/issues"
+  },
+  "homepage": "https://github.com/JustinPatenaude/blueberryCMS#readme",
+  "devDependencies": {
+    "browserify": "^11.0.1"
+  },
+  "dependencies": {
+    "gray-matter": "^2.0.1"
+  }
+}
