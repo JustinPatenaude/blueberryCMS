@@ -1,3 +1,5 @@
+var grayMatter = require('gray-matter');
+
 $(function() {
 
 var userName = 'JustinPatenaude'; //Cookies.get('username');
@@ -8,7 +10,6 @@ var github = new Github({
       auth: "oauth"
     });
 var repo = github.getRepo(userName, repositoryName);
-var frontMatter = require('gray-matter');
 
 /* onLoad
 =================================*/
@@ -104,13 +105,16 @@ function findFiles(){
     $.each(tree, function(key, value){
       if(value['path'].indexOf('.md') > -1){
         repo.read('master', value['path'], function(err, data) {
-          frontMatter(data);
-          console.log(data);
+          data = grayMatter(data);
+          $('.file_list').append('<option val="'+value[path]+'">'+data[name]+'</option>');
+          console.log('new: '+data[name]);
         });
       }
     });
   });
 }
+
+//test
 
 
 /*var repo = github.getRepo(userName, 'jekyll');

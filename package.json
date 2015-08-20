@@ -1,10 +1,11 @@
 {
-  "name": "package.json",
+  "name": "blueberrycms",
   "version": "1.0.0",
-  "description": "Applicationm",
-  "main": "index.js",
+  "description": "",
+  "main": "admin.js",
   "scripts": {
-    "test": "test"
+    "build": "browserify admin.js -o bundle.js",
+    "watch": "watchify admin.js -o bundle.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,10 @@
   },
   "homepage": "https://github.com/JustinPatenaude/blueberryCMS#readme",
   "devDependencies": {
-    "browserify": "^11.0.1"
+    "browserify": "^11.0.1",
+    "coffee-script": "^1.9.3",
+    "toml": "^2.3.0",
+    "watchify": "^3.3.1"
   },
   "dependencies": {
     "gray-matter": "^2.0.1"
