@@ -420,7 +420,7 @@
             "encoding": "utf-8"
           };
         } else {
-          	content = {
+            content = {
               "content": btoa(String.fromCharCode.apply(null, new Uint8Array(content))),
               "encoding": "base64"
             };

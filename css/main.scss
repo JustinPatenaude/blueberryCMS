@@ -3,45 +3,229 @@
 ---
 @charset "utf-8";
 
+/* Global Styles
+=================================*/
 
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
 
-// Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+.cf:before, .cf:after { content: " "; display: table;}
+.cf:after {clear: both;}
+.cf {*zoom: 1;}
 
-$spacing-unit:     30px;
-
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
-
-// Width of the content area
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
-
-.button {
-  border: 0;
+.bb_button {
   background: #3D9CDD;
   box-shadow: 0px 1px 2px 0px rgba(34,40,52,0.70), inset 0px 1px 0px 0px rgba(255,255,255,0.15);
   border-radius: 4px;
-  font-size: 15px;
+  font-family: 'Source Sans Pro';
+  font-size: 14px;
   color: #FFFFFF;
-  line-height: 19px;
   display: inline-block;
   padding: 10px 15px;
   cursor: pointer;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  margin-right: 10px;
 }
 
-.button:hover {
-  background: #3785BB;
+.bb_button:hover {
+  background: #3784B8;
+}
+
+/* Layout
+=================================*/
+
+html, body {
+    height: 100%;
+}
+
+.bb_cms_wrapper {
+	height: 100%;
+  padding: 50px 50px 50px 150px;
+	background: #323E50;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #fff;
+}
+
+/* Home
+=================================*/
+
+.bb_button_wrapper {
+  margin-bottom: 10px;
+}
+
+.repository_name {
+  background: #374356;
+  box-shadow: 0px 1px 2px 0px rgba(34,40,52,0.70), inset 0px 1px 0px 0px rgba(255,255,255,0.10);
+  border-radius: 4px;
+  display: inline-block;
+  padding: 15px 20px;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+}
+
+.repository_name:hover {
+  background: #293340;
+}
+
+.github_logout {
+  display: none;
+}
+
+/* Sidebar
+=================================*/
+
+.bb_sidebar_wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100px;
+  background: #293340;
+  text-align: center;
+}
+
+.bb_sidebar_section {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.bb_sidebar_link {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  font-family: 'Source Sans Pro';
+  color: #7C8A9D;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.bb_sidebar_link:hover {
+  color: #fff;
+}
+
+.bb_sidebar_link.bb_active {
+  color: #fff;
+  background: #323E50;
+}
+
+.bb_logo {
+  background: #3D9CDD;
+}
+
+.logo {
+  width: 100%;
+}
+
+.bb_sidebar_sub_links {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 150px;
+  background: #293340;
+}
+
+.bb_sidebar_fake_link:hover .bb_sidebar_sub_links {
+  display: block;
+}
+
+.bb_sidebar_sub_links a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  color: #7C8A9D;
+  text-decoration: none;
+}
+
+.bb_sidebar_sub_links a i {
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 0;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+}
+
+.bb_sidebar_sub_links a:hover {
+  color: #fff;
+  background: #323E50;
+}
+
+.bb_sidebar_link i {
+  display: block;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.bb_sidebar_link span {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+/* Custom Font
+=================================*/
+
+@font-face {
+  font-family: "blueberry-cms";
+  src:url("{{ "/assets/fonts/blueberry-cms.eot" | prepend: site.baseurl }}");
+  src:url("{{ "/assets/fonts/blueberry-cms.eot?#iefix" | prepend: site.baseurl }}") format("embedded-opentype"),
+    url("{{ "/assets/fonts/blueberry-cms.woff" | prepend: site.baseurl }}") format("woff"),
+    url("{{ "/assets/fonts/blueberry-cms.ttf" | prepend: site.baseurl }}") format("truetype"),
+    url("{{ "/assets/fonts/blueberry-cms.svg#blueberry-cms" | prepend: site.baseurl }}") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "blueberry-cms" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="bb-"]:before,
+[class*=" bb-"]:before {
+  font-family: "blueberry-cms" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bb-pages:before {
+  content: "b";
+}
+.bb-posts:before {
+  content: "c";
+}
+.bb-settings:before {
+  content: "d";
+}
+.bb-add-pages:before {
+  content: "a";
+}
+.bb-lists:before {
+  content: "f";
+}
+.bb-edit-pages:before {
+  content: "e";
 }
 
 // Using media queries with like this:
@@ -60,8 +244,8 @@ $on-laptop:        800px;
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+//@import
+//        "base",
+//        "layout",
+//        "syntax-highlighting"
+//;

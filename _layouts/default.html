@@ -5,15 +5,17 @@
 
   <body>
 
-    {% include header.html %}
+    <div class="bb_cms_wrapper">
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
-    </div>
+        {% include sidebar.html %}
 
-    {% include footer.html %}
+        <div class="bb_content_wrapper">
+
+          {{ content }}
+
+        </div><!-- /bb_content_wrapper -->
+
+    </div><!-- /bb_cms_wrapper -->
 
   </body>
 
