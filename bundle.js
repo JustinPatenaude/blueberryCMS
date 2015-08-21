@@ -15,7 +15,7 @@ var repo = github.getRepo(userName, repositoryName);
 /* onLoad
 =================================*/
 
-if (window.location.href.indexOf("hello") > -1) {
+if ($('.github_login').is(':visible')) {
   findRepositories(accessToken);
 }
 
@@ -35,7 +35,6 @@ $('.github_logout').click(function(){
 
 $(document).on('click', '.repository_name', function(){
   var repository = $(this);
-  console.log('test');
   saveRepository(repository);
 });
 
@@ -50,6 +49,11 @@ window.addEventListener('message', function (event) {
 		});
     findRepositories(accessToken);
 	});
+});
+
+$('.file_list').on('change', function(){
+  var file = $(this).find('option:selected');
+  showFile(file);
 });
 
 
@@ -104,20 +108,35 @@ function checkRepository(){
 function findFiles(){
   repo.getTree('master', function(err, tree) {
     $.each(tree, function(key, value){
-      if(value['path'].indexOf('.md') > -1){
-        repo.read('master', value['path'], function(err, data) {
+      if(value.path.indexOf('.md') > -1){
+        repo.read('master', value.path, function(err, data) {
           data = grayMatter(data);
-          $('.file_list').append('<option val="'+value['path']+'">'+data['name']+'</option>');
-          console.log('new: '+data['name']);
+          var content = data.content;
+          var optionAttributes = "";
+          $.each(data.data, function(key, value){
+            optionAttributes += 'data-'+key+'="'+value+'" ';
+          });
+          console.log(optionAttributes);
+          console.log(data);
+          $('.file_list').append('<option val="'+value.path+'" '+optionAttributes+' data-content="'+content+'">'+data.data.title+'</option>');
         });
       }
     });
   });
 }
 
-//test
+function showFile(file){
+  var fileTitle = file.attr('data-title'),
+      fileLayout = file.attr('data-layout'),
+      filePermalink = file.attr('data-permalink'),
+      fileContent = file.attr('data-content');
+  $('#title').val(fileTitle);
+  $('#layout').val(fileLayout);
+  $('#permalink').val(filePermalink);
+  $('.content').val(fileContent);
+}
 
-
+//gfjdhsbhsdgjhsf
 /*var repo = github.getRepo(userName, 'jekyll');
 
 repo.read('gh-pages', 'index.html', function(err, data) {

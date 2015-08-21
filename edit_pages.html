@@ -6,13 +6,29 @@ permalink: /edit_pages/
 <div class="bb_edit bb_edit_pages">
 
   <div class="bb_editor_info">
-    <select class="bb_select file_list">
-      <option disabled>Select a page</option>
-    </select>
-    <div class="front_matter"></div>
+    <div class="bb_front_matter">
+      <div class="front_matter_indv">
+        <label for="files">Files</label>
+        <select id="files" class="bb_select file_list">
+          <option disabled>Select a page</option>
+        </select>
+      </div>
+      <div class="front_matter_indv">
+        <label for="title">Title</label>
+        <input id="title" type="text" class="bb_text_input" val="" placeholder="title"></input>
+      </div>
+      <div class="front_matter_indv">
+        <label for="layout">Layout</label>
+        <input id="layout" type="text" class="bb_text_input" val="" placeholder="layout"></input>
+      </div>
+      <div class="front_matter_indv">
+        <label for="permalink">Permalink</label>
+        <input id="permalink" type="text" class="bb_text_input" val="" placeholder="permalink"></input>
+      </div>
+    </div>
   </div>
 
-  <textarea class="bb_editor">
+  <textarea class="bb_editor content">
   </textarea>
 
 </div>
