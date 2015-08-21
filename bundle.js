@@ -107,8 +107,8 @@ function findFiles(){
       if(value['path'].indexOf('.md') > -1){
         repo.read('master', value['path'], function(err, data) {
           data = grayMatter(data);
-          $('.file_list').append('<option val="'+value[path]+'">'+data[name]+'</option>');
-          console.log('new: '+data[name]);
+          $('.file_list').append('<option val="'+value['path']+'">'+data['name']+'</option>');
+          console.log('new: '+data['name']);
         });
       }
     });
