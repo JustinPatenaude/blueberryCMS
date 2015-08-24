@@ -6,13 +6,13 @@ permalink: /edit_pages/
 <div class="bb_edit bb_edit_pages">
 
   <div class="bb_editor_info">
+    <div class="bb_file_list">
+      <label for="files">Files</label>
+      <select id="files" class="bb_select file_list">
+        <option disabled>Select a page</option>
+      </select>
+    </div>
     <div class="bb_front_matter">
-      <div class="front_matter_indv">
-        <label for="files">Files</label>
-        <select id="files" class="bb_select file_list">
-          <option disabled>Select a page</option>
-        </select>
-      </div>
       <div class="front_matter_indv">
         <label for="title">Title</label>
         <input id="title" type="text" class="bb_text_input" val="" placeholder="title"></input>
@@ -29,6 +29,15 @@ permalink: /edit_pages/
   </div>
 
   <textarea class="bb_editor content">
+  </textarea>
+
+  <div class="bb_editor_actions">
+    <div class="bb_button file_save">
+      Save File
+    </div>
+  </div>
+
+  <textarea class="bb_editor created_file">
   </textarea>
 
 </div>

@@ -20,7 +20,7 @@ html, body {
 .cf:after {clear: both;}
 .cf {*zoom: 1;}
 
-select:focus, textarea:focus {
+select:focus, textarea:focus, input:focus {
 	outline: 0;
 }
 
@@ -32,11 +32,10 @@ select:focus, textarea:focus {
   font-size: 14px;
   color: #fff;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 15px 20px;
   cursor: pointer;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  margin-right: 10px;
 }
 
 .bb_button:hover {
@@ -47,7 +46,7 @@ select:focus, textarea:focus {
 =================================*/
 
 .bb_cms_wrapper {
-	height: 100%;
+	min-height: 100%;
   padding: 50px 50px 50px 150px;
 	background: #323E50;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -61,12 +60,17 @@ select:focus, textarea:focus {
   margin-bottom: 10px;
 }
 
+.bb_button_wrapper .bb_button {
+	margin-right: 10px;
+}
+
 .repository_name {
   background: #374356;
   box-shadow: 0px 1px 2px 0px rgba(34,40,52,0.70), inset 0px 1px 0px 0px rgba(255,255,255,0.10);
   border-radius: 4px;
   display: inline-block;
   padding: 15px 20px;
+	font-size: 14px;
   margin: 0 10px 10px 0;
   cursor: pointer;
   border: 1px solid transparent;
@@ -180,6 +184,10 @@ select:focus, textarea:focus {
 
 }
 
+.bb_file_list {
+	margin: 0 0 30px 0;
+}
+
 .front_matter_indv {
 	display: inline-block;
 	margin: 0 30px 30px 0;
@@ -221,6 +229,11 @@ select:focus, textarea:focus {
 	font-size: 14px;
 	font-family: 'Source Sans Pro';
 	width: 200px;
+	border: 1px solid transparent;
+}
+
+.bb_text_input:focus {
+  border: 1px solid #3D9CDD;
 }
 
 .bb_editor {
@@ -233,7 +246,13 @@ select:focus, textarea:focus {
 	font-size: 14px;
 	font-family: 'Source Sans Pro';
   width: 100%;
+	max-width: 100%;
   min-height: 400px;
+	margin-bottom: 30px;
+}
+
+.bb_editor_actions {
+	text-align: right;
 }
 
 /* Custom Font

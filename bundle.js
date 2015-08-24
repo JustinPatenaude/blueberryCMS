@@ -56,6 +56,18 @@ $('.file_list').on('change', function(){
   showFile(file);
 });
 
+$('.front_matter_indv .bb_text_input').bind('change keyup input', function(){
+  compileFile();
+});
+
+$('.front_matter_indv .content').bind('change keyup input', function(){
+  compileFile();
+});
+
+$('.file_save').on('click', function(){
+  saveFile();
+});
+
 
 /* Functions
 =================================*/
@@ -111,14 +123,12 @@ function findFiles(){
       if(value.path.indexOf('.md') > -1){
         repo.read('master', value.path, function(err, data) {
           data = grayMatter(data);
-          var content = data.content;
+          var content = data.content.trim();
           var optionAttributes = "";
           $.each(data.data, function(key, value){
             optionAttributes += 'data-'+key+'="'+value+'" ';
           });
-          console.log(optionAttributes);
-          console.log(data);
-          $('.file_list').append('<option val="'+value.path+'" '+optionAttributes+' data-content="'+content+'">'+data.data.title+'</option>');
+          $('.file_list').append('<option data-file="'+value.path+'" '+optionAttributes+' data-content="'+content+'">'+data.data.title+'</option>');
         });
       }
     });
@@ -134,6 +144,29 @@ function showFile(file){
   $('#layout').val(fileLayout);
   $('#permalink').val(filePermalink);
   $('.content').val(fileContent);
+}
+
+function compileFile(){
+  var fileTitle = $('#title').val(),
+      fileLayout = $('#layout').val(),
+      filePermalink = $('#permalink').val(),
+      fileContent = $('.content').val(),
+      compiledFile = "---\n"+
+      "title: "+fileTitle+"\n"+
+      "layout: "+fileLayout+"\n"+
+      "permalink: "+filePermalink+"\n"+
+      "---\n"+
+      fileContent;
+  $('.created_file').val(compiledFile);
+}
+
+function saveFile(){
+  var fileName = $('.file_list option:selected').attr('data-file'),
+      newContent = $('.created_file').val();
+      console.log(fileName+' | '+newContent);
+  repo.write('gh-pages', fileName, newContent, 'Updated from BlueberryCMS', function(err) {
+    console.log(err);
+  });
 }
 
 //gfjdhsbhsdgjhsf
