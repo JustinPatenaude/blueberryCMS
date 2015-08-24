@@ -3,8 +3,8 @@ var grayMatter = require('gray-matter');
 
 $(function() {
 
-var userName = 'JustinPatenaude'; //Cookies.get('username');
-var accessToken = 'e4a41102c6b5270ae96bdf35c992980f0f3eec56'; //Cookies.get('access_token');
+var userName = 'JustinPatenaude';//Cookies.get('username');
+var accessToken = '83c515a4da33ad8156b5df4b535900ea2482c5aa';//Cookies.get('access_token');
 var repositoryName = Cookies.get('repository_name');
 var github = new Github({
       token: accessToken,
@@ -26,7 +26,7 @@ if (window.location.href.indexOf("/edit_pages/") > -1) {
 /* Events
 =================================*/
 $('.github_login').click(function(){
-  window.open('https://github.com/login/oauth/authorize?client_id=e4a530296caca9a0979d');
+  window.open('https://github.com/login/oauth/authorize?client_id=e4a530296caca9a0979d&scope=repo');
 });
 
 $('.github_logout').click(function(){
@@ -56,11 +56,11 @@ $('.file_list').on('change', function(){
   showFile(file);
 });
 
-$('.front_matter_indv .bb_text_input').bind('change keyup input', function(){
+$('.front_matter_indv .bb_text_input').on('change keyup paste', function(){
   compileFile();
 });
 
-$('.front_matter_indv .content').bind('change keyup input', function(){
+$('.content').on('change keyup paste', function(){
   compileFile();
 });
 
@@ -118,10 +118,10 @@ function checkRepository(){
 }
 
 function findFiles(){
-  repo.getTree('master', function(err, tree) {
+  repo.getTree('gh-pages', function(err, tree) {
     $.each(tree, function(key, value){
       if(value.path.indexOf('.md') > -1){
-        repo.read('master', value.path, function(err, data) {
+        repo.read('gh-pages', value.path, function(err, data) {
           data = grayMatter(data);
           var content = data.content.trim();
           var optionAttributes = "";
