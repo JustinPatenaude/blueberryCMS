@@ -2,8 +2,8 @@ var grayMatter = require('gray-matter');
 
 $(function() {
 
-var userName = 'JustinPatenaude';//Cookies.get('username');
-var accessToken = '83c515a4da33ad8156b5df4b535900ea2482c5aa';//Cookies.get('access_token');
+var userName = Cookies.get('username');
+var accessToken = Cookies.get('access_token');
 var repositoryName = Cookies.get('repository_name');
 var github = new Github({
       token: accessToken,
