@@ -1,9 +1,5 @@
-var grayMatter = require('gray-matter');
-
 $(function() {
-
-var userName = Cookies.get('username');
-var accessToken = Cookies.get('access_token');
+  
 var repositoryName = Cookies.get('repository_name');
 var github = new Github({
       token: accessToken,
@@ -134,7 +130,9 @@ function findFiles(){
   });
 }
 
+//Show file
 function showFile(file){
+  $('.bb_editor').htmlarea();
   var fileTitle = file.attr('data-title'),
       fileLayout = file.attr('data-layout'),
       filePermalink = file.attr('data-permalink'),

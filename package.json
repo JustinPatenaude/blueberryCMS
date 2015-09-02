@@ -2,10 +2,10 @@
   "name": "blueberrycms",
   "version": "1.0.0",
   "description": "",
-  "main": "admin.js",
+  "main": "app.js",
   "scripts": {
-    "build": "browserify admin.js -o bundle.js",
-    "watch": "watchify admin.js -o bundle.js"
+    "build": "browserify app.js -o bundle.js",
+    "watch": "watchify app.js -o bundle.js"
   },
   "repository": {
     "type": "git",
