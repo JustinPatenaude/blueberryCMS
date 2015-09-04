@@ -1,5 +1,6 @@
 $(function() {
-  
+
+
 var repositoryName = Cookies.get('repository_name');
 var github = new Github({
       token: accessToken,
@@ -15,6 +16,10 @@ if ($('.github_login').is(':visible')) {
 }
 
 if (window.location.href.indexOf("/edit_pages/") > -1) {
+  $('textarea.content').meltdown({
+    openPreview: true,
+    sidebyside: true
+  });
   findFiles();
 }
 
@@ -132,7 +137,6 @@ function findFiles(){
 
 //Show file
 function showFile(file){
-  $('.bb_editor').htmlarea();
   var fileTitle = file.attr('data-title'),
       fileLayout = file.attr('data-layout'),
       filePermalink = file.attr('data-permalink'),

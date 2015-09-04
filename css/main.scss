@@ -16,9 +16,9 @@ html, body {
 		font-family: 'Source Sans Pro';
 }
 
-.cf:before, .cf:after { content: " "; display: table;}
-.cf:after {clear: both;}
-.cf {*zoom: 1;}
+.cf:before, .cf:after, .meltdown_controls:before, .meltdown_controls:after { content: " "; display: table;}
+.cf:after, .meltdown_controls:after {clear: both;}
+.cf, .meltdown_controls {*zoom: 1;}
 
 select:focus, textarea:focus, input:focus {
 	outline: 0;
@@ -237,22 +237,98 @@ select:focus, textarea:focus, input:focus {
 }
 
 .bb_editor {
-  background: #2F3A4A;
-  box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.10), inset 0px 1px 2px 0px rgba(34,40,52,0.70);
-  border-radius: 4px;
   border: 0;
 	padding: 10px;
 	color: #fff;
 	font-size: 14px;
 	font-family: 'Source Sans Pro';
   width: 100%;
-	max-width: 100%;
-  min-height: 400px;
-	margin-bottom: 30px;
+	background: none;
 }
 
 .bb_editor_actions {
 	text-align: right;
+}
+
+.meltdown_controls {
+	background: #374356;
+	box-shadow: 0px 1px 2px 0px rgba(34, 40, 52, 0.7), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.15);
+	border-radius: 4px;
+	border: 0;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+.meltdown_controlbutton {
+	float: left;
+	position: relative;
+}
+
+.meltdown_controlbutton span {
+	display: block;
+	font-size: 0;
+	padding: 6px 9px;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.meltdown_controlbutton span:hover {
+	background: rgba(255,255,255,0.2);
+}
+
+.meltdown_controlbutton span:before {
+	font-family: 'FontAwesome';
+	color: #fff;
+	font-size: 14px;
+	font-weight: normal;
+	display: block;
+}
+
+span[title="Toggle preview"]:before { content: '\f06e'; }
+span[title="Bold"]:before { content: '\f032'; }
+span[title="Italics"]:before { content: '\f033'; }
+span[title="Unordered List"]:before { content: '\f0ca'; }
+span[title="Ordered List"]:before { content: '\f0cb'; }
+span[title="Table"]:before { content: '\f0ce'; }
+span[title="Header 1"]:before { content: '\f1dc 1'; }
+span[title="Header 2"]:before { content: '\f1dc 2'; }
+span[title="Header 3"]:before { content: '\f1dc 3'; }
+span[title="Header 4"]:before { content: '\f1dc 4'; }
+span[title="Header 5"]:before { content: '\f1dc 5'; }
+span[title="Header 6"]:before { content: '\f1dc 6'; }
+span[title="Link"]:before { content: '\f0c1'; }
+span[title="Image"]:before { content: '\f03e'; }
+span[title="Blockquote"]:before { content: '\f10d'; }
+span[title="Inline Code"]:before { content: '\f121'; }
+span[title="Horizontal Rule"]:before { content: '\f068'; }
+
+.sidebyside .meltdown_editor-wrap {
+	float: left;
+	width: 50%;
+	background: #2F3A4A;
+  box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.10), inset 0px 1px 2px 0px rgba(34,40,52,0.70);
+  border-radius: 4px 0 0 4px;
+	border-right: 1px solid rgba(255,255,255,0.10);
+  border: 0;
+	padding: 10px;
+	height: 400px;
+}
+
+.meltdown_preview-header {
+	display: none;
+}
+
+.sidebyside .meltdown_preview-wrap {
+	float: right;
+	width: 50%;
+	background: #2F3A4A;
+  box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.10), inset 0px 1px 2px 0px rgba(34,40,52,0.70);
+  border-radius: 0 4px 4px 0;
+	border-left: 1px solid rgba(255,255,255,0.10);
+  border: 0;
+	padding: 10px;
+	height: 400px;
 }
 
 /* Custom Font
